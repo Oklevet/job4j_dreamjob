@@ -74,7 +74,6 @@ public class Vacancy {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Vacancy vacancy = (Vacancy) o;
         return id == vacancy.id && Objects.equals(title, vacancy.title)
                 && Objects.equals(description, vacancy.description)
