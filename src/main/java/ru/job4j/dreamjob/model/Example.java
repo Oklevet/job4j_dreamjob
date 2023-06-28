@@ -46,11 +46,11 @@ public class Example {
             return false;
         }
         Example example = (Example) o;
-        return id == example.id && Objects.equals(link, example.link) && Objects.equals(controller, example.controller);
+        return id == example.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, link, controller);
+        return Objects.hash(id);
     }
 }
