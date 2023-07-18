@@ -14,12 +14,18 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new HashMap<>();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Иванов Иван", "Стажер", LocalDateTime.now()));
-        save(new Candidate(1, "Петров Петр", "Сеньор", LocalDateTime.now()));
-        save(new Candidate(2, "Сергеев Сергей", "Сеньор", LocalDateTime.now()));
-        save(new Candidate(3, "Машова Маша", "Стажер", LocalDateTime.now()));
-        save(new Candidate(4, "Неков Нек", "Джун", LocalDateTime.now()));
-        save(new Candidate(5, "Витальев Виталий", "Джун+++", LocalDateTime.now()));
+        save(new Candidate(0, "Иванов Иван", "Стажер",
+                LocalDateTime.now(), "Стажер", 30000));
+        save(new Candidate(1, "Петров Петр", "Сеньор",
+                LocalDateTime.now(), "Сеньор", 300000));
+        save(new Candidate(2, "Сергеев Сергей", "Сеньор",
+                LocalDateTime.now(), "Сеньор", 25000));
+        save(new Candidate(3, "Машова Маша", "Стажер",
+                LocalDateTime.now(), "Стажер", 20000));
+        save(new Candidate(4, "Неков Нек", "Джун",
+                LocalDateTime.now(), "Джун", 60000));
+        save(new Candidate(5, "Витальев Виталий", "Джун+++",
+                LocalDateTime.now(), "Джун+++", 80000));
     }
 
     public static MemoryCandidateRepository getInstance() {
@@ -42,7 +48,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(candidate.getId(), (id, oldCandidate) ->
                 new Candidate(oldCandidate.getId(), candidate.getName(), candidate.getDescription(),
-                        candidate.getCreationDate())) != null;
+                        candidate.getCreationDate(), candidate.getWorkingPosition(), candidate.getSalary())) != null;
     }
 
     @Override

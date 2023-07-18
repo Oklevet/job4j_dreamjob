@@ -8,12 +8,16 @@ public class Candidate {
     private String name;
     private String description;
     private LocalDateTime creationDate;
+    private String workingPosition;
+    private int salary;
 
-    public Candidate(int id, String name, String description, LocalDateTime creationDate) {
+    public Candidate(int id, String name, String description, LocalDateTime creationDate, String workingPosition, int salary) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
+        this.workingPosition = workingPosition;
+        this.salary = salary;
     }
 
     public int getId() {
@@ -46,6 +50,22 @@ public class Candidate {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public String getWorkingPosition() {
+        return workingPosition;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setWorkingPosition(String workingPosition) {
+        this.workingPosition = workingPosition;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     @Override
