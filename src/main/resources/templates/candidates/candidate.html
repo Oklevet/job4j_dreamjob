@@ -18,16 +18,16 @@
         <form class="mt-3" th:action="@{/candidates/update}" method="post" th:object="${candidate}">
             <input type="hidden" name="id" th:field="*{id}">
             <div class="mb-3">
-                <label for="fio" class="form-label"><b>ФИО</b></label>
-                <input type="text" class="form-control" id="fio" name="name" th:field="*{name}" placeholder="Укажите ФИО кандидата">
+                <label for="name" class="form-label"><b>ФИО</b></label>
+                <input type="text" class="form-control" id="name" name="name" th:field="*{name}" placeholder="Укажите ФИО кандидата">
             </div>
             <div class="mb-3">
-                <label for="position" class="form-label"><b>Желаемая должность</b></label>
-                <input type="text" class="form-control" id="position" name="workingPosition" th:field="*{workingPosition}" placeholder="Укажите интересующую должность"/>
+                <label for="workingPosition" class="form-label"><b>Желаемая должность</b></label>
+                <input type="text" class="form-control" id="workingPosition" name="workingPosition" th:field="*{workingPosition}" placeholder="Укажите интересующую должность"/>
             </div>
             <div class="mb-3">
                 <label for="salary" class="form-label"><b>Желаемая зарплата</b></label>
-                <input type="text" class="form-control" id="salary" name="salary" th:field="*{salary}" placeholder="Укажите желаемую зарплату">
+                <input type="number" class="form-control" id="salary" name="salary" th:field="*{salary}" placeholder="Укажите желаемую зарплату">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label"><b>О себе</b></label>
