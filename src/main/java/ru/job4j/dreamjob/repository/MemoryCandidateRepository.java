@@ -2,7 +2,6 @@ package ru.job4j.dreamjob.repository;
 
 import ru.job4j.dreamjob.model.Candidate;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,8 +41,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(candidate.getId(), (id, oldCandidate) ->
                 new Candidate(oldCandidate.getId(), candidate.getName(), candidate.getDescription(),
-                        //candidate.getCreationDate(),
-                        candidate.getWorkingPosition(), candidate.getSalary())) != null;
+                        candidate.getCreationDate(), candidate.getWorkingPosition(), candidate.getSalary())) != null;
     }
 
     @Override
