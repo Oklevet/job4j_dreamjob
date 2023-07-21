@@ -41,7 +41,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(candidate.getId(), (id, oldCandidate) ->
                 new Candidate(oldCandidate.getId(), candidate.getName(), candidate.getDescription(),
-                        candidate.getCreationDate(), candidate.getWorkingPosition(), candidate.getSalary())) != null;
+                        candidate.getWorkingPosition(), candidate.getSalary())) != null;
     }
 
     @Override
