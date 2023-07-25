@@ -16,12 +16,12 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final ConcurrentHashMap<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Иванов Иван", "Стажер", "Стажер", 30000));
-        save(new Candidate(1, "Петров Петр", "Сеньор", "Сеньор", 300000));
-        save(new Candidate(2, "Сергеев Сергей", "Сеньор", "Сеньор", 25000));
-        save(new Candidate(3, "Машова Маша", "Стажер", "Стажер", 20000));
-        save(new Candidate(4, "Неков Нек", "Джун", "Джун", 60000));
-        save(new Candidate(5, "Витальев Виталий", "Джун+++", "Джун+++", 80000));
+        save(new Candidate(0, "Иванов Иван", "Стажер", "Стажер", 30000, 0));
+        save(new Candidate(1, "Петров Петр", "Сеньор", "Сеньор", 300000, 0));
+        save(new Candidate(2, "Сергеев Сергей", "Сеньор", "Сеньор", 25000, 0));
+        save(new Candidate(3, "Машова Маша", "Стажер", "Стажер", 20000, 0));
+        save(new Candidate(4, "Неков Нек", "Джун", "Джун", 60000, 0));
+        save(new Candidate(5, "Витальев Виталий", "Джун+++", "Джун+++", 80000, 0));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(candidate.getId(), (id, oldCandidate) ->
                 new Candidate(oldCandidate.getId(), candidate.getName(), candidate.getDescription(),
-                        candidate.getWorkingPosition(), candidate.getSalary())) != null;
+                        candidate.getWorkingPosition(), candidate.getSalary(), candidate.getCityId())) != null;
     }
 
     @Override

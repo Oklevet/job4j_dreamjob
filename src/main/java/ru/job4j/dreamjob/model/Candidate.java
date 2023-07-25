@@ -10,13 +10,15 @@ public class Candidate {
     private LocalDateTime creationDate = LocalDateTime.now();
     private String workingPosition;
     private int salary;
+    private int cityId;
 
-    public Candidate(int id, String name, String description, String workingPosition, int salary) {
+    public Candidate(int id, String name, String description, String workingPosition, int salary, int cityId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.workingPosition = workingPosition;
         this.salary = salary;
+        this.cityId = cityId;
     }
 
     public Candidate() {
@@ -68,6 +70,14 @@ public class Candidate {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
     @Override
