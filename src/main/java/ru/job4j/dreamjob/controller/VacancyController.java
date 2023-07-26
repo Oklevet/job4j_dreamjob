@@ -50,7 +50,6 @@ public class VacancyController {
         return "vacancies/one";
     }
 
-
     @PostMapping("/update")
     public String update(@ModelAttribute Vacancy vacancy, Model model) {
         var isUpdated = vacancyService.update(vacancy);
