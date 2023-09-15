@@ -13,8 +13,8 @@ import java.util.Optional;
 public class SimpleCandidateService implements CandidateService {
     private final CandidateRepository candidateRepository;
 
-    public SimpleCandidateService(CandidateRepository candidateRepository) {
-        this.candidateRepository = candidateRepository;
+    public SimpleCandidateService(CandidateRepository sql2oCandidateRepository) {
+        this.candidateRepository = sql2oCandidateRepository;
     }
 
     @Override
