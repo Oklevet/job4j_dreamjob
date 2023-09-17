@@ -43,8 +43,8 @@ public class Sql2oCandidateRepository implements CandidateRepository {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery("DELETE FROM candidates WHERE id = :id");
             query.addParameter("id", id);
-            query.executeUpdate();
-            return true;
+            var deletedRows = query.executeUpdate().getResult();
+            return deletedRows > 0;
         }
     }
 
@@ -53,7 +53,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
         try (var connection = sql2o.open()) {
             var sql = """
                     UPDATE candidates
-                    SET name = :name, description = :description, creation_date = :creationDate,
+                    SET name = :name, description = :description, creationDate = :creationDate,
                         workingPosition = :workingPosition, salary = :salary, cityId = :cityId
                     WHERE id = :id
                     """;
