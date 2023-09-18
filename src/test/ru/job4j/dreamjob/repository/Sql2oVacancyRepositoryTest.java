@@ -44,7 +44,6 @@ public class Sql2oVacancyRepositoryTest {
         sql2oFileRepository = new Sql2oFileRepository(sql2o);
 
         /** нужно сохранить хотя бы один файл, т.к. Vacancy от него зависит
-         *
          */
         file = new File("test", "test");
         sql2oFileRepository.save(file);
