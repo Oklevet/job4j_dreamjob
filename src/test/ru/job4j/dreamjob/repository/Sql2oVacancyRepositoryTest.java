@@ -122,5 +122,4 @@ public class Sql2oVacancyRepositoryTest {
         var isUpdated = sql2oVacancyRepository.update(vacancy);
         assertThat(isUpdated).isFalse();
     }
-
 }
