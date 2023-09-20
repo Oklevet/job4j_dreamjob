@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 public class Sql2oUserRepository implements UserRepository {
 
     private final Sql2o sql2o;
-    private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public Sql2oUserRepository(Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -54,7 +54,7 @@ public class Sql2oUserRepository implements UserRepository {
             user.setId(generatedId);
             optionalUser = Optional.of(user);
         } catch (Exception e) {
-            log.error("Добавление пользователя с повторяющимся почтовым адресом " + user.getEmail());
+            LOG.error("Добавление пользователя с повторяющимся почтовым адресом " + user.getEmail());
         }
         return optionalUser;
     }
