@@ -2,17 +2,19 @@ package ru.job4j.dreamjob.repository;
 
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
-import org.sql2o.Sql2oException;
 import ru.job4j.dreamjob.model.User;
-import ru.job4j.dreamjob.model.Vacancy;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Collection;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Repository
 public class Sql2oUserRepository implements UserRepository {
 
     private final Sql2o sql2o;
+    private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public Sql2oUserRepository(Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -52,7 +54,7 @@ public class Sql2oUserRepository implements UserRepository {
             user.setId(generatedId);
             optionalUser = Optional.of(user);
         } catch (Exception e) {
-            System.out.println("Пользователь с таким почтовым адресом уже зарегистрирован");
+            log.error("Добавление пользователя с повторяющимся почтовым адресом " + user.getEmail());
         }
         return optionalUser;
     }
