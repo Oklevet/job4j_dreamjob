@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import ru.job4j.dreamjob.configuration.DatasourceConfiguration;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.model.File;
-import ru.job4j.dreamjob.model.Vacancy;
 
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -18,13 +17,10 @@ import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-
 class Sql2oCandidateRepositoryTest {
 
     private static Sql2oCandidateRepository sql2oCandidateRepository;
-
     private static Sql2oFileRepository sql2oFileRepository;
-
     private static File file;
 
     @BeforeAll
@@ -65,7 +61,7 @@ class Sql2oCandidateRepositoryTest {
     @Test
     public void whenSaveThenGetSame() {
         var creationDate = now().truncatedTo(ChronoUnit.MINUTES);
-        var candid = new Candidate(0, "name","description","position",
+        var candid = new Candidate(0, "name", "description", "position",
                 100, 1);
         candid.setCreationDate(creationDate);
         var candidate = sql2oCandidateRepository.save(candid);
@@ -77,11 +73,11 @@ class Sql2oCandidateRepositoryTest {
     public void whenSaveSeveralThenGetAll() {
         var creationDate = now().truncatedTo(ChronoUnit.MINUTES);
         var candidate1 = sql2oCandidateRepository.save(new Candidate(0, "name1",
-                "description1","position", 100, 1));
+                "description1", "position", 100, 1));
         var candidate2 = sql2oCandidateRepository.save(new Candidate(0, "name2",
-                "description2","position", 100, 1));
+                "description2", "position", 100, 1));
         var candidate3 = sql2oCandidateRepository.save(new Candidate(0, "name3",
-                "description3","position", 100, 1));
+                "description3", "position", 100, 1));
         var result = sql2oCandidateRepository.findAll();
         assertThat(result).isEqualTo(List.of(candidate1, candidate2, candidate3));
     }
@@ -95,7 +91,7 @@ class Sql2oCandidateRepositoryTest {
     @Test
     public void whenDeleteThenGetEmptyOptional() {
         var candidate = sql2oCandidateRepository.save(new Candidate(0, "name",
-                "description","position", 100, 1));
+                "description", "position", 100, 1));
         var isDeleted = sql2oCandidateRepository.deletedId(candidate.getId());
         var savedCandidate = sql2oCandidateRepository.findById(candidate.getId());
         assertThat(isDeleted).isTrue();
@@ -110,7 +106,7 @@ class Sql2oCandidateRepositoryTest {
     @Test
     public void whenUpdateThenGetUpdated() {
         var creationDate = now().truncatedTo(ChronoUnit.MINUTES);
-        var candid = new Candidate(0, "name","description","position",
+        var candid = new Candidate(0, "name", "description", "position",
                 100, 1);
         candid.setCreationDate(creationDate);
         var candidate = sql2oCandidateRepository.save(candid);
